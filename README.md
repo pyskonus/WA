@@ -15,6 +15,9 @@ of ocurrences for each association.
 2. The program gets a dictionary in .ods file as input.
 Also it gets a word embeddings file (.300.vec) and a list
 of ukrainian words in a .list file.
+The result of this program's work is two files, one is a
+.json file - the dictionary itself, and the second is a
+.list file - the list of available incentives.
 
 3. The project contains following folders:
 	data_preparation
