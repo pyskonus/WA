@@ -1,4 +1,4 @@
-# word_associations
+# Word associations
 
 Coursework by Bohdan Pysko
 
