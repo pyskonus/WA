@@ -12,11 +12,11 @@ from bigraph import Bigraph
 
 WORDS_FROM_VECS = 7
 
-VEC_RESULT = "C:/UCU/SEMESTR_2/Programming/word_associations/processed_data/filtered.300.vec"
-ASSOC_DCT_JSON = "C:/UCU/SEMESTR_2/Programming/word_associations/processed_data/dict.json"
-INCENTIVES = "C:/UCU/SEMESTR_2/Programming/word_associations/results/inc.list"
+VEC_RESULT = "C:/UCU/SEMESTR_2/Programming/WA/processed_data/filtered.300.vec"
+ASSOC_DCT_JSON = "C:/UCU/SEMESTR_2/Programming/WA/processed_data/dict.json"
+INCENTIVES = "C:/UCU/SEMESTR_2/Programming/WA/results/inc.list"
 # contains all the incentives of the resulting file
-RESULT = "C:/UCU/SEMESTR_2/Programming/word_associations/results/RESULT.json"
+RESULT = "C:/UCU/SEMESTR_2/Programming/WA/results/RESULT.json"
 
 
 def cut_vector(line):
@@ -182,7 +182,7 @@ def form_response(word, vectors, assoc_dct={}):
             else:
                 res[el[0]] = 1
 
-        result = []
+        result = WA
         for el in res:
             result.append((el, res[el]))
 
