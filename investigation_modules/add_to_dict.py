@@ -182,9 +182,11 @@ def form_response(word, vectors, assoc_dct={}):
             else:
                 res[el[0]] = 1
 
+        result = []
         for el in res:
-            print(el.ljust(30, ' '), res[el])
+            result.append((el, res[el]))
 
+        return sorted(result, key=lambda x: x[1], reverse=True)
 
     try:
         c = lowest ** (1.0 / len(from_vecs))
@@ -293,21 +295,21 @@ def complete_dct():
             return
 
     # transfer the words and their associations to the files
-    # for recently_added in b:
-    #     added.append(recently_added)
-    #     dct[recently_added] = b[recently_added]
-    #
-    # with open(RESULT, 'w') as f:
-    #     f.write(json.dumps(dct, ensure_ascii=False, indent=2))
-    #
-    # with open(INCENTIVES, 'w', encoding='utf-8') as f:
-    #     f.write(str(len(added)))
-    #     added.sort()
-    #     for el in added:
-    #         f.write('\n' + el)
-    #
-    # if no_assoc:
-    #     print("These words have no associations: " + ', '.join(no_assoc))
+    for recently_added in b:
+        added.append(recently_added)
+        dct[recently_added] = b[recently_added]
+
+    with open(RESULT, 'w') as f:
+        f.write(json.dumps(dct, ensure_ascii=False, indent=2))
+
+    with open(INCENTIVES, 'w', encoding='utf-8') as f:
+        f.write(str(len(added)))
+        added.sort()
+        for el in added:
+            f.write('\n' + el)
+
+    if no_assoc:
+        print("These words have no associations: " + ', '.join(no_assoc))
 
     return
 
