@@ -1,4 +1,5 @@
 # folders
+build
 instructions
 original_data
 processed_data
@@ -6,3 +7,4 @@ processed_data
 
 #files
 word_associations.mp4
+gitignore

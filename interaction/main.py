@@ -1,8 +1,8 @@
 import os
 import json
 
-INCENTIVES = "C:/UCU/SEMESTR_2/Programming/WA/results/inc.list"
-RESULT = "C:/UCU/SEMESTR_2/Programming/WA/results/RESULT.json"
+INCENTIVES = "../results/inc.list"
+RESULT = "../results/RESULT.json"
 
 
 if __name__ == "__main__":

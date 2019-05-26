@@ -15,12 +15,12 @@
 import json
 from pyexcel_ods3 import get_data
 
-ASSOC_DCT_ODS = "C:/UCU/SEMESTR_2/Programming/WA/original_data/dict.ods"
-ASSOC_DCT_JSON = "C:/UCU/SEMESTR_2/Programming/WA/processed_data/dict.json"
-WORDS_ORIGINAL = "C:/UCU/SEMESTR_2/Programming/WA/original_data/uk_UA.dic"
-WORDS_RESULT = "C:/UCU/SEMESTR_2/Programming/WA/processed_data/ua.dic"
-VEC_ORIGINAL = "C:/UCU/SEMESTR_2/Programming/WA/original_data/cc.uk.300.vec"
-VEC_RESULT = "C:/UCU/SEMESTR_2/Programming/WA/processed_data/filtered.300.vec"
+ASSOC_DCT_ODS = "../original_data/dict.ods"
+ASSOC_DCT_JSON = "../processed_data/dict.json"
+WORDS_ORIGINAL = "../original_data/uk_UA.dic"
+WORDS_RESULT = "../processed_data/ua.dic"
+VEC_ORIGINAL = "../original_data/cc.uk.300.vec"
+VEC_RESULT = "..A/processed_data/filtered.300.vec"
 
 
 def m_f_present(row):
