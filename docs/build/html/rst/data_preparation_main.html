@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>data_preparation_main module &#8212; WA 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-data_preparation_main">
+<span id="data-preparation-main-module"></span><h1>data_preparation_main module<a class="headerlink" href="#module-data_preparation_main" title="Permalink to this headline">¶</a></h1>
+<p>This module is designed to prepare the raw data for usage.
+It performs the following actions:
+1) reads the hand-written dictionary from dict.ods and writes it into</p>
+<blockquote>
+<div><p>another file called “dict.json”;</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>reads the words from file uk_UA.dic, crops them and writes into the file
+‘ua_words.dic’;</p></li>
+<li><p>using the words from the file mentioned above, this module filters the
+file cc.uk.300.vec and rewrites it into filtered.300.vec in order to
+make sure all the words are valid in ukrainian language and to make the
+rest of the coursework programs execute faster.</p></li>
+</ol>
+<p>Runtime of this module on my PC is about one minute.</p>
+<p>Libraries and packages:
+json
+pyexcel_ods3</p>
+<dl class="function">
+<dt id="data_preparation_main.create_dict">
+<code class="descclassname">data_preparation_main.</code><code class="descname">create_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_preparation_main.create_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the file “dict.json” from “dict.ods”.
+Runtime: 0.57 seconds</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_preparation_main.crop_words_filter_vectors">
+<code class="descclassname">data_preparation_main.</code><code class="descname">crop_words_filter_vectors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_preparation_main.crop_words_filter_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>1) Creates the file “ua.dic” from “uk_UA.dic”, namely crops the words from the
+original file.
+2) Filters the vectors file using the mentioned words.
+Runtime: 62 seconds</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_preparation_main.m_f_present">
+<code class="descclassname">data_preparation_main.</code><code class="descname">m_f_present</code><span class="sig-paren">(</span><em>row</em><span class="sig-paren">)</span><a class="headerlink" href="#data_preparation_main.m_f_present" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function checks if male or female associations are present in the given row.
+If, for example, female associations are present, and male are not, it returns
+(False, True).
+:param row: list, which represents the row
+:return: tuple, that has two boolean values</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">WA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, pyskonus.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/rst/data_preparation_main.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

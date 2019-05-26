@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>add_to_dict module &#8212; WA 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-add_to_dict">
+<span id="add-to-dict-module"></span><h1>add_to_dict module<a class="headerlink" href="#module-add_to_dict" title="Permalink to this headline">¶</a></h1>
+<p>This module is the main module of the work. It composes a dictionary using
+the files from ‘processed_data’ folder and writes it into a resulting file.
+Since the procedure of composing the result is very long, this program can
+add the new information to a file without losing the previous progress.</p>
+<p>Libraries and packages:
+json
+os
+math</p>
+<dl class="function">
+<dt id="add_to_dict.complete_dct">
+<code class="descclassname">add_to_dict.</code><code class="descname">complete_dct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#add_to_dict.complete_dct" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function adds words to the resulting dictionary till there are some
+of them that are present in hand-written dictionary and absent from the
+result file (or from INCENTIVES file). After that the function adds words
+using vectors file only.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="add_to_dict.cut_vector">
+<code class="descclassname">add_to_dict.</code><code class="descname">cut_vector</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#add_to_dict.cut_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a vector from the line in file with embeddings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Line</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="add_to_dict.find_closest">
+<code class="descclassname">add_to_dict.</code><code class="descname">find_closest</code><span class="sig-paren">(</span><em>word</em>, <em>path</em>, <em>amount</em><span class="sig-paren">)</span><a class="headerlink" href="#add_to_dict.find_closest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds a given amount of words that are closest to the given word compared
+by word vectors</p>
+<p>precondition:
+amount is less than the number of lines in the file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Word</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Path</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Amount</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="add_to_dict.find_delta">
+<code class="descclassname">add_to_dict.</code><code class="descname">find_delta</code><span class="sig-paren">(</span><em>lst1</em>, <em>lst2</em><span class="sig-paren">)</span><a class="headerlink" href="#add_to_dict.find_delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds total difference between two vectros.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Lst1</dt>
+<dd class="field-odd"><p>list(int)</p>
+</dd>
+<dt class="field-even">Lst2</dt>
+<dd class="field-even"><p>list(int)</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="add_to_dict.form_response">
+<code class="descclassname">add_to_dict.</code><code class="descname">form_response</code><span class="sig-paren">(</span><em>word</em>, <em>vectors</em>, <em>assoc_dct={}</em><span class="sig-paren">)</span><a class="headerlink" href="#add_to_dict.form_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a set of tuples for one particular incentive word,
+as in the assoc_dct (that one from json file)
+It uses both hand-written dictionary and the vectors file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Word</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Vectors</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Assoc_dct</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list(tuple(str, int))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="add_to_dict.insert_word">
+<code class="descclassname">add_to_dict.</code><code class="descname">insert_word</code><span class="sig-paren">(</span><em>word</em>, <em>difference</em>, <em>top</em>, <em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#add_to_dict.insert_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is a helping function for find_closest.
+For example, if we search associations to word ‘football’ and encountered a
+word ‘ball’ in the file:</p>
+<p>word: ball</p>
+<p>difference: 82</p>
+<dl class="simple">
+<dt>top: game</dt><dd><p>baseball
+match</p>
+</dd>
+<dt>points (differences): 77</dt><dd><p>85
+101</p>
+</dd>
+</dl>
+<p>the result will be:
+top: game</p>
+<blockquote>
+<div><p>ball
+baseball</p>
+</div></blockquote>
+<dl class="simple">
+<dt>points: 77</dt><dd><p>82
+85</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Word</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Difference</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Top</dt>
+<dd class="field-odd"><p>list(str)</p>
+</dd>
+<dt class="field-even">Points</dt>
+<dd class="field-even"><p>list(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">WA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, pyskonus.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/rst/add_to_dict.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
