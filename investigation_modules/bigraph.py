@@ -1,14 +1,26 @@
+"""
+This module provides an ADT for the project.
+
+Libraries an packages:
+numpy
+ctypes
+"""
+
 import numpy
 import ctypes
 
 
 # this class was defined as a helping class for DynamicArray
 class Array:
+    """
+    An array based on C array.
+    """
+
     def __init__(self, size):
         """
         Creates an array with size elements.
 
-        :param size:
+        :param size: int
         """
         if size <= 0:
             raise ValueError("Array size must be > 0")
@@ -21,18 +33,18 @@ class Array:
 
     def __len__(self):
         """
-        # Returns the size of the array.
+        Returns the size of the array.
 
-        :return:
+        :return: int
         """
         return self._size
 
     def __getitem__(self, index):
         """
-        # Gets the contents of the index element.
+        Gets the contents of the index element.
 
-        :param index:
-        :return:
+        :param index: int
+        :return: value
         """
         if index < 0 or index >= len(self):
             raise IndexError("Array subscript out of range")
@@ -40,11 +52,11 @@ class Array:
 
     def __setitem__(self, index, value):
         """
-        # Puts the value in the array element at index position.
+        Puts the value in the array element at index position.
 
-        :param index:
-        :param value:
-        :return:
+        :param index: int
+        :param value: value
+        :return: None
         """
         if index < 0 or index >= len(self):
             raise IndexError("Array subscript out of range")
@@ -52,10 +64,10 @@ class Array:
 
     def clear(self, value):
         """
-        # Clears the array by setting each element to the given value.
+        Clears the array by setting each element to the given value.
 
-        :param value:
-        :return:
+        :param value: value
+        :return: None
         """
         for i in range(len(self)):
             self._elements[i] = value
@@ -75,6 +87,10 @@ class Array:
 
 # An iterator for the Array ADT.
 class _ArrayIterator:
+    """
+    An iterator for the Array ADT.
+    """
+
     def __init__(self, the_array):
         self._array_ref = the_array
         self._cur_index = 0
@@ -94,12 +110,12 @@ class _ArrayIterator:
 # this class was defined as a helping class for Bigraph
 class DynamicArray:
     """
-    A dynamic array class akin to a simplified Python list
+    A dynamic array class akin to a simplified Python list.
     """
 
     def __init__(self):
         """
-        Create an empty array
+        Create an empty array.
         """
         self._n = 0  # count actual elements
         self._A = self._make_array(1)  # low-level array
@@ -109,14 +125,22 @@ class DynamicArray:
         return self._n
 
     def __getitem__(self, k):
-        """Return element at index k."""
+        """
+        Return element at index k.
+
+        :k: int
+        :return: value
+        """
         if not 0 <= k < self._n:
             raise IndexError('invalid index')
         return self._A[k]  # retrieve from array
 
     def append(self, obj):
         """
-        Add object to end of the array
+        Add object to end of the array.
+
+        :obj: value
+        :return: None
         """
         if self._n == len(self._A):  # not enough room
             self._resize(2 * len(self._A))  # so double capacity
@@ -125,7 +149,10 @@ class DynamicArray:
 
     def _resize(self, c):  # nonpublic utility
         """
-        Resize internal array to capacity c
+        Resize internal array to capacity c.
+
+        :c: int
+        :return: None
         """
         B = self._make_array(c)  # new (bigger) array
         for k in range(self._n):  # for each existing value
@@ -134,11 +161,17 @@ class DynamicArray:
 
     def _make_array(self, c):  # nonpublic utility
         """
-        Return new array with capacity c
+        Return new array with capacity c.
+
+        :c: int
+        :return: Array
         """
         return Array(c)  # see ctypes documentation
 
     def __iter__(self):
+        """
+        Rturns an iterator for DynamicArray.
+        """
         if self._n == 0:
             return iter([])
         temp_array = Array(self._n)
@@ -147,7 +180,12 @@ class DynamicArray:
         return iter(temp_array)
 
     def insert(self, k, value):
-        """Insert value at index k, shifting subsequent values rightward."""
+        """
+        Insert value at index k, shifting subsequent values rightward.
+
+        :k: int
+        :value: value
+        """
         # (for simplicity, we assume 0 <= k <= n in this version)
         if self._n == len(self._A):  # not enough room
             self._resize(2 * len(self._A))  # so double capacity
@@ -158,7 +196,10 @@ class DynamicArray:
 
     def remove(self, value):
         """
-        Remove first occurrence of value(or raise ValueError)
+        Remove first occurrence of value(or raise ValueError).
+
+        :value: value
+        :return: None
         """
         # note: we do not consider shrinking the dynamic array in this version
         for k in range(self._n):
@@ -172,6 +213,11 @@ class DynamicArray:
         raise ValueError("value not found")  # only reached if no match
 
     def __str__(self):
+        """
+        Provides a string representation for the DynamicArray class.
+
+        :return: string
+        """
         result = '|'
         for el in self._A:
             if el is None:
@@ -189,8 +235,17 @@ class Bigraph:
 
     Methods defined here:
 
-    add(incentive, reactions):
-    adds a new incentive with its reactions to the bigraph
+    __setitem__(incentive, reactions):
+    Adds a new incentive with its reactions to the bigraph.
+
+    __getitem__(word):
+    Rturns the reactions for given incentive.
+
+    __iter__():
+    Returns an iterator through bigraph's incentives.
+
+    get_incentives(word):
+    Returns a set of incentives for given reaction.
     """
     # If you find a collocation "left/right vertexes" in any further docstrings
     # or comments, "left vertexes" means stimulus words and "right vertexes"
@@ -212,6 +267,12 @@ class Bigraph:
         self._numbers = numpy.array([[]], dtype=numpy.uint8)
 
     def __setitem__(self, incentive, reactions):
+        """
+        Adds a new incentive with its reactions to the bigraph.
+
+        :incentive: str
+        :reactions: set(tuple(str, int))
+        """
         # if the incentive is already in the graph, raise an exception with a corresponding message
         if incentive in self._incentives:
             raise ValueError("The given incentive is already present in the graph")
@@ -280,6 +341,12 @@ class Bigraph:
         return None
 
     def __getitem__(self, word):
+        """
+        Rturns the reactions for given incentive.
+
+        :word: str
+        :return: list
+        """
         if word in self._incentives:
             res = []
             for i in range(self._numbers.shape[1]):
@@ -290,6 +357,12 @@ class Bigraph:
             raise ValueError("The element is not in the graph")
 
     def __str__(self):
+        """
+        Only needed to show how Bigraph class works in use_bigraph_example.py
+        module.
+
+        :return: str
+        """
         res = '  '
         for el in self._reactions_ordered:
             res += str(el)
@@ -303,9 +376,20 @@ class Bigraph:
         return res[:-1]
 
     def __iter__(self):
+        """
+        Returns an iterator through bigraph's incentives.
+
+        :return: iterator object
+        """
         return iter(self._incentives_ordered)
 
     def get_incentives(self, word):
+        """
+        Returns a set of incentives for given reaction.
+
+        :word: str
+        :return: set
+        """
         if word in self._reactions:
             res = set()
             for i in range(self._numbers.shape[0]):

@@ -1,3 +1,6 @@
+"""
+A module that shows how Bigraph class works.
+"""
 from bigraph import Bigraph
 
 b = Bigraph()

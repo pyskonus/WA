@@ -1,5 +1,14 @@
-import os
+"""
+Provides interaction with the user.
+
+Libraries and packages:
+json
+os
+"""
+
+
 import json
+import os
 
 INCENTIVES = "../results/inc.list"
 RESULT = "../results/RESULT.json"

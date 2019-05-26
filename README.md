@@ -60,3 +60,9 @@ results:
 4. To start the program execute the main.py module in the
 interaction folder. To add words to the resulting file
 execute the add_to_dict.py module in investigation_modules.
+
+4*. To download the program you can download the .exe file
+from folder dist.
+
+5. You can find the documentation for this project in
+docs/build/html/rst.

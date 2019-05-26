@@ -1,7 +1,14 @@
-### This module is the main module of the work. It composes a dictionary using
-### the files from 'processed_data' folder and writes it into a resulting file.
-### Since the procedure of composing the result is very long, this program can
-### add the new information to a file without losing the previous progress.
+"""
+This module is the main module of the work. It composes a dictionary using
+the files from 'processed_data' folder and writes it into a resulting file.
+Since the procedure of composing the result is very long, this program can
+add the new information to a file without losing the previous progress.
+
+Libraries and packages:
+json
+os
+math
+"""
 
 
 import json
@@ -20,10 +27,23 @@ RESULT = "../results/RESULT.json"
 
 
 def cut_vector(line):
+    """
+    Gets a vector from the line in file with embeddings.
+
+    :line: str
+    :return: list(int)
+    """
     return list(map(lambda x: float(x), line.split(' ')[1:]))
 
 
 def find_delta(lst1, lst2):
+    """
+    Finds total difference between two vectros.
+
+    :lst1: list(int)
+    :lst2: list(int)
+    :return: int
+    """
     res = 0
     for el in zip(lst1, lst2):
         res += abs(el[0] - el[1])
@@ -56,6 +76,11 @@ def insert_word(word, difference, top, points):
     points: 77
             82
             85
+
+    :word: str
+    :difference: float
+    :top: list(str)
+    :points: list(int)
     """
     current = len(points) - 1
     while points[current] > difference and current > -1:
@@ -75,6 +100,11 @@ def find_closest(word, path, amount):
 
     precondition:
     amount is less than the number of lines in the file
+
+    :word: str
+    :path: str
+    :amount: int
+    :return: list(str)
     """
     with open(path, 'r', encoding='utf-8') as file:
         main_vector = []
@@ -122,6 +152,11 @@ def form_response(word, vectors, assoc_dct={}):
     This function returns a set of tuples for one particular incentive word,
     as in the assoc_dct (that one from json file)
     It uses both hand-written dictionary and the vectors file.
+
+    :word: str
+    :vectors: str
+    :assoc_dct: dict
+    :return: list(tuple(str, int))
     """
     res = {}
 

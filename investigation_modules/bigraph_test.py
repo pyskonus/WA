@@ -1,3 +1,11 @@
+"""
+A module that contains test for Bigraph class.
+
+Libraries and packages:
+unittest
+"""
+
+
 from bigraph import Bigraph
 import unittest
 

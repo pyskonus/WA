@@ -1,15 +1,21 @@
-### This module is designed to prepare the raw data for usage.
-### It performs the following actions:
-### 1) reads the hand-written dictionary from dict.ods and writes it into
-###    another file called "dict.json";
-### 2) reads the words from file uk_UA.dic, crops them and writes into the file
-###    'ua_words.dic';
-### 3) using the words from the file mentioned above, this module filters the
-###    file cc.uk.300.vec and rewrites it into filtered.300.vec in order to
-###    make sure all the words are valid in ukrainian language and to make the
-###    rest of the coursework programs execute faster.
-###
-### Runtime of this module on my PC is about one minute.
+"""
+This module is designed to prepare the raw data for usage.
+It performs the following actions:
+1) reads the hand-written dictionary from dict.ods and writes it into
+   another file called "dict.json";
+2) reads the words from file uk_UA.dic, crops them and writes into the file
+   'ua_words.dic';
+3) using the words from the file mentioned above, this module filters the
+   file cc.uk.300.vec and rewrites it into filtered.300.vec in order to
+   make sure all the words are valid in ukrainian language and to make the
+   rest of the coursework programs execute faster.
+
+Runtime of this module on my PC is about one minute.
+
+Libraries and packages:
+json
+pyexcel_ods3
+"""
 
 
 import json
